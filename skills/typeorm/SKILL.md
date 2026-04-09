@@ -39,4 +39,3 @@ For creating migrations see [references/migrations.md](references/migrations.md)
 - Use `QueryBuilder` for complex filtering, sorting, or aggregation rather than chaining many `find` options.
 - Avoid excessive joins that would significantly impact performance; prefer targeted queries over loading entire object graphs.
 - Never pass raw user input directly into query strings — use parameterised queries or TypeORM's built-in query builder bindings.
-- Use `!` to mark non-nullable properties to satisfy Typescript `strictPropertyInitialization` rule.

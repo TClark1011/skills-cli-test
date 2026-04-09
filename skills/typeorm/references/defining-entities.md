@@ -8,7 +8,7 @@ Always define entities in code (code-first). Always specify the column `type` ex
 
 ### Numbers
 
-- **Never use `float`.** Always use `decimal` with `precision: 10, scale: 2`.
+- **Never use `float` columns.** For decimal numbers use `decimal` columns with `precision: 10, scale: 2`.
 - Apply `DecimalTransformer` to all `decimal` columns so values are returned as JS `number`, not `string`.  
   See [decimal-transformer.md](decimal-transformer.md) for the implementation and usage.
 - Use `int` for integer and foreign key columns.
@@ -42,7 +42,7 @@ Always provide the referenced enum.
 
 ```ts
 @Column({ type: 'enum', enum: UserRole, default: UserRole.User })
-role: UserRole;
+role!: UserRole;
 ```
 
 ### Dates
@@ -54,17 +54,17 @@ import { Type } from 'class-transformer';
 
 @Type(() => Date)
 @Column({ type: 'timestamp' })
-startDate: Date;
+startDate!: Date;
 ```
 
 Use `@CreateDateColumn` and `@UpdateDateColumn` for audit timestamps — TypeORM manages these automatically.
 
 ```ts
 @CreateDateColumn()
-createdAt: Date;
+createdAt!: Date;
 
 @UpdateDateColumn()
-updatedAt: Date;
+updatedAt!: Date;
 ```
 
 ---
@@ -78,13 +78,14 @@ import { IsEmail, Length, IsEnum, IsPositive, IsOptional } from 'class-validator
 
 @Length(1, 127)
 @IsEmail()
-email: string;
+email!: string;
 
 @IsEnum(UserRole)
-role: UserRole;
+role!: UserRole;
 
-@IsPositive()
-amount: number;
+@IsInt()
+@Min(0)
+amount!: number;
 
 @IsOptional()
 @Length(0, 500)
@@ -119,10 +120,14 @@ Add `@Index()` to columns that are frequently filtered or sorted on to improve q
 ```ts
 @Index()
 @Column({ type: 'varchar', length: 127 })
-email: string;
+email!: string;
 
 // Composite index at entity level
 @Index(['lastName', 'firstName'])
 @Entity()
 export class User { ... }
 ```
+
+## Other best practices
+
+- Use `!` to mark non-nullable properties to satisfy Typescript `strictPropertyInitialization` rule.
