@@ -1,10 +1,5 @@
 # Variable Declarations
 
-- **Never use `var`.**
-- Use **`const`** by default.
-- Use **`let`** only when reassignment is needed (e.g. loop counters, swaps).
-- Avoid unnecessary local variables.
-
 ## const vs let
 
 ```typescript

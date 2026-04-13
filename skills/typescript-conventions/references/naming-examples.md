@@ -3,12 +3,12 @@
 # Variables
 
 ```typescript
-// Bad
+// ❌ Bad
 let All_Players;
 let HideSidebar = true;
 let Subscriptions;
 
-// Good
+// ✅ Good
 let players;
 let sidebar = true;
 let subscriptions;
@@ -18,11 +18,11 @@ let subscriptions;
 
 
 ```typescript
-// Bad
+// ❌ Bad
 onButtonClick() {}
 onUpdateUser() {}
 
-// Good
+// ✅ Good
 updateCompany() {}
 updateUser() {}
 ```

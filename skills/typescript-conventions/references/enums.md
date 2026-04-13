@@ -1,10 +1,5 @@
 # Types & Enums
 
-- **Always type variables** — no untyped variables, no `any`.
-- Use **classes/models** for database entities.
-- Use **`type`** for other object shapes.
-- Use **`enum`** for fixed sets of values (roles, tabs, statuses).
-
 ## Enum Rules
 
 | Concern | Casing |

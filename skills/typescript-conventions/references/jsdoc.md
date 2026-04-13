@@ -1,8 +1,5 @@
 # JSDoc
 
-- Add JSDoc (`/** */`) to functions, classes, types, and attributes.
-- Include `@link` references to sources when applicable.
-
 ## Link to a reference
 
 ```typescript

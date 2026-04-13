@@ -28,7 +28,8 @@ const reduced = faces.reduce((acc, cur) => acc + cur);
 
 // Sort
 const numbers = [2, 3, 1, 0];
-const sorted = numbers.sort((a, b) => a - b);
+numbers.sort((a, b) => a - b); // Mutates the original array
+const sorted = [...numbers].sort((a, b) => a - b); // Use spread syntax if you don't want to mutate the original array
 ```
 
 ## Object spread
@@ -37,16 +38,16 @@ const sorted = numbers.sort((a, b) => a - b);
 const pikachu = { name: 'Pikachu 🐹' };
 const stats = { hp: 40, attack: 60, defense: 45 };
 
-// Bad — manual property assignment
-pikachu['hp'] = stats.hp;
-pikachu['attack'] = stats.attack;
-pikachu['defense'] = stats.defense;
+// ❌ Bad — manual property assignment
+pikachu.hp = stats.hp;
+pikachu.attack = stats.attack;
+pikachu.defense = stats.defense;
 
-// Bad — Object.assign
+// ❌ Bad — Object.assign (mutates the original `pikachu` object)
 const lvl0 = Object.assign(pikachu, stats);
 const lvl1 = Object.assign(pikachu, { hp: 45 });
 
-// Good — spread syntax
+// ✅Good — spread syntax
 const lvl0 = { ...pikachu, ...stats };
 const lvl1 = { ...pikachu, hp: 45 };
 ```
