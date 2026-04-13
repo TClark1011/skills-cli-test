@@ -24,7 +24,7 @@ const poo = faces.find(v => v === '💩');
 const withPoo = faces.filter(v => v === '💩');
 
 // Reduce to a single value
-const reduced = faces.reduce((acc, cur) => acc + cur);
+const reduced = faces.reduce((result, current) => result + current);
 
 // Sort
 const numbers = [2, 3, 1, 0];
@@ -45,9 +45,9 @@ pikachu.defense = stats.defense;
 
 // ❌ Bad — Object.assign (mutates the original `pikachu` object)
 const lvl0 = Object.assign(pikachu, stats);
-const lvl1 = Object.assign(pikachu, { hp: 45 });
+const lvl1 = Object.assign(pikachu, stats, { hp: 45 });
 
 // ✅Good — spread syntax
 const lvl0 = { ...pikachu, ...stats };
-const lvl1 = { ...pikachu, hp: 45 };
+const lvl1 = { ...pikachu, ...stats, hp: 45 };
 ```
